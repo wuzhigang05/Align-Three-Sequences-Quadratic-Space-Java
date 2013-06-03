@@ -10,7 +10,7 @@ is similar to Hirschberg\'s algorithm http://en.wikipedia.org/wiki/Hirschberg's_
 I have an implmentation in Python, see https://github.com/wuzhigang05/Dynamic-Programming-Linear-Space.git
 
 
-
+See run{1,2,3,4,5}.sh for the usage of the program
 
 
 

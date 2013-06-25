@@ -40,8 +40,8 @@ B: AATAAAGCCTGAGTAGGAAGAAAAAAAAAAAA
 C: AATAAAGCCTGAGTAGGAAG-----------C
 M: ******* ****** **  *            
 
-Running_time: 36.36 s
+Running_time: 37.47 s
 Allocated memory for JVM :123 Megabytes
 Initially requested memory :0 Megabytes
 Maximum memory can be used :123 Megabytes
-Memory used by the JVM :71 Megabytes
+Memory used by the JVM :38 Megabytes

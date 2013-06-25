@@ -7,7 +7,8 @@ import java.lang.management.MemoryUsage;
 
 public class AlignThreeSequence {
 	public static int lineWidth = 80;
-	public static int[][] tranpose(int[][] M) {
+    // tranpose a 2D matrix
+	private static int[][] tranpose(int[][] M) {
 		int nrows = M.length;
 		int ncols = M[0].length;
 		int[][] N = new int[ncols][nrows];
@@ -18,8 +19,9 @@ public class AlignThreeSequence {
 		}
 		return N;
 	}
-
-	public static int[][] ClockWiseRotate90Degree(int[][] M) {
+    
+    //rotate a 2D matrix clockwise 90 degree
+	private static int[][] ClockWiseRotate90Degree(int[][] M) {
 		int nrows = M.length;
 		int ncols = M[0].length;
 		int[][] N = new int[ncols][nrows];
@@ -30,8 +32,9 @@ public class AlignThreeSequence {
 		}
 		return N;
 	}
-
-	public static String join(int[] L, String delimiter) {
+  
+    // join an integer array with specified delimiter
+	private static String join(int[] L, String delimiter) {
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < L.length - 1; ++i) {
 			result.append(L[i]);
@@ -41,7 +44,8 @@ public class AlignThreeSequence {
 		return result.toString();
 	}
 
-	public static String print2DMatrix(int[][] M) {
+    // wrapper function to print a 2D matrix
+	private static String print2DMatrix(int[][] M) {
 		int nrows = M.length;
 		int ncols = M[0].length;
 		String result = "";
@@ -51,7 +55,8 @@ public class AlignThreeSequence {
 		return result;
 	}
 
-	public static String print3DMatrix(int[][][] M) {
+    // wrapper function to print a 3D matrix
+	private static String print3DMatrix(int[][][] M) {
 		int nrows = M.length;
 		int ncols = M[0].length;
 		String result = "";
@@ -64,8 +69,8 @@ public class AlignThreeSequence {
 		}
 		return result;
 	}
-
-	public static void PrintHash(HashMap m) {
+    
+	private static void PrintHash(HashMap m) {
 		Set set = m.entrySet();
 		Iterator i = set.iterator();
 		while (i.hasNext()) {
@@ -74,6 +79,7 @@ public class AlignThreeSequence {
 		}
 	}
 
+    // generated the ScoreMatrix Hash Table
 	public static HashMap ScoreMatrixTable() {
 		int mismatch = -4;
 		int match = 5;
@@ -114,14 +120,14 @@ public class AlignThreeSequence {
 		return ScoreThreeChar;
 	}
 
-	public static void testScoreTwoSeq(StringBuilder A, StringBuilder B) {
+	private static void testScoreTwoSeq(StringBuilder A, StringBuilder B) {
 		NamedObject AB = ScoreAlignTwoSeq(A, B);
 		System.out.println("Score Matrix\n" + AB.Score);
 		System.out.println(AB.Aln[0]);
 		System.out.println(AB.Aln[1]);
 	}
 
-	public static NamedObject testAlignThreeSeq(StringBuilder A, StringBuilder B, StringBuilder C) {
+	private static NamedObject testAlignThreeSeq(StringBuilder A, StringBuilder B, StringBuilder C) {
 
 		NamedObject result = alignThreeSequence(A, B, C);
 		System.out.format("%s\n%s\n%s\n", result.Aln[0],
@@ -129,12 +135,12 @@ public class AlignThreeSequence {
 		return result;
 	}
 
-	public static NamedObject testRecursiveCall(StringBuilder A, StringBuilder B, StringBuilder C){
+	private static NamedObject testRecursiveCall(StringBuilder A, StringBuilder B, StringBuilder C){
 		NamedObject result = recursive_call(A, B, C);
 		return result;
 	}
 
-	public static void test() {
+	private static void test() {
 		int[][] test = new int[3][4];
 		int k = 0;
 		// System.out.println("dimension of Array = (" + test.length + ", " +
@@ -148,7 +154,7 @@ public class AlignThreeSequence {
 		testRecursiveCall(new StringBuilder("ATC"), new StringBuilder("ATC"), new StringBuilder("ATC"));
 	}
 
-	public static Pair<String,Integer> getMatchString(NamedObject result){
+	private static Pair<String,Integer> getMatchString(NamedObject result){
 		String res = "";
 		String A = result.Aln[0].toString();
 		String B = result.Aln[1].toString();
@@ -167,7 +173,7 @@ public class AlignThreeSequence {
 
 	}
 
-	public static class Pair<X, Y>{
+	private static class Pair<X, Y>{
 		public final X first;
 		public final Y second;
 		public Pair(X a, Y b){
@@ -176,6 +182,7 @@ public class AlignThreeSequence {
 		}
 	}
 
+    // write NamedObject result into a writer 
 	public static void writeResult(NamedObject result, PrintWriter writer){
 		String A = result.Aln[0].toString();
 		String B = result.Aln[1].toString();
@@ -196,7 +203,7 @@ public class AlignThreeSequence {
 		}
 	}
 	
-	public static class NamedObject2D {
+	private static class NamedObject2D {
 		public final int[][] Score;
 		public final int [][][] Path;
 		public NamedObject2D(int[][] s, int [][][] p) {
@@ -205,7 +212,7 @@ public class AlignThreeSequence {
 		}
 	}
 	
-	public static class NamedObject {
+	private static class NamedObject {
 		// encapsulate class
 		public final int Score;
 		public final StringBuilder [] Aln;
@@ -217,7 +224,7 @@ public class AlignThreeSequence {
 	}
 
 
-	public static int[][] scoreThreeSeq(StringBuilder A, StringBuilder B, StringBuilder C) {
+	private static int[][] scoreThreeSeq(StringBuilder A, StringBuilder B, StringBuilder C) {
 		HashMap score = ScoreMatrixTable();
 		int new_indel = (Integer) score.get("A" + "-" + "-");
 		int new_match = (Integer) score.get("A" + "A" + "-");
@@ -231,13 +238,13 @@ public class AlignThreeSequence {
 			current = new int[B.length() + 1][C.length() + 1];
 			current[0][0] = prev[0][0] + new_indel;
 			// fill dummy row when C == 0
-			if (a % 10 == 0){
-				System.err.format("%d/%d in scoreThreeSeq\n", a, A.length());
-				long endTime   = System.currentTimeMillis();
-				long totalTime = endTime - startTime;
-				startTime = endTime;
-				System.err.format("cost: " + new DecimalFormat("#.##").format(totalTime/1000.0) + " s\n");
-			}
+//			if (a % 10 == 0){
+//				System.err.format("%d/%d in scoreThreeSeq\n", a, A.length());
+//				long endTime   = System.currentTimeMillis();
+//				long totalTime = endTime - startTime;
+//				startTime = endTime;
+//				System.err.format("cost: " + new DecimalFormat("#.##").format(totalTime/1000.0) + " s\n");
+//			}
 				
 			for (int b = 1; b < B.length() + 1; ++b) {
 				int diagonal = prev[b - 1][0] + new_match;
@@ -290,7 +297,8 @@ public class AlignThreeSequence {
 //		System.out.println(print2DMatrix(current));
 		return current;
 	}
-	public static int [][] scoreTwoSeq(StringBuilder B, StringBuilder C) {
+
+	private static int [][] scoreTwoSeq(StringBuilder B, StringBuilder C) {
 		int[][] M = new int[B.length() + 1][C.length() + 1];
 
 		HashMap score = ScoreMatrixTable();
@@ -318,7 +326,7 @@ public class AlignThreeSequence {
 		return M;
 	}
 		
-	public static NamedObject2D scoreTwoSeqBC(StringBuilder B, StringBuilder C) {
+	private static NamedObject2D scoreTwoSeqBC(StringBuilder B, StringBuilder C) {
 		int[][] M = new int[B.length() + 1][C.length() + 1];
 		int[][][] P = new int[B.length() + 1][C.length() + 1][3];
 		P[0][0][0] = -1;
@@ -373,7 +381,7 @@ public class AlignThreeSequence {
 
 	}
 
-	public static NamedObject2D scoreTwoSeqAB(StringBuilder A, StringBuilder B) {
+	private static NamedObject2D scoreTwoSeqAB(StringBuilder A, StringBuilder B) {
 		int[][] M = new int[A.length() + 1][B.length() + 1];
 		// P is used to store the 3D coordinate for previous position, where the
 		// alignment
@@ -432,7 +440,7 @@ public class AlignThreeSequence {
 		return new NamedObject2D(M, P);
 	}
 
-	public static NamedObject2D scoreTwoSeqAC(StringBuilder A, StringBuilder C) {
+	private static NamedObject2D scoreTwoSeqAC(StringBuilder A, StringBuilder C) {
 		int[][] M = new int[A.length() + 1][C.length() + 1];
 		// P is used to store the 3D coordinate for previous position, where the
 		// alignment
@@ -564,7 +572,7 @@ public class AlignThreeSequence {
 		return new NamedObject(max_score, T);
 	}
 	
-	public static NamedObject alignThreeSequence(StringBuilder A, StringBuilder B, StringBuilder C) {
+	private static NamedObject alignThreeSequence(StringBuilder A, StringBuilder B, StringBuilder C) {
 		HashMap score = ScoreMatrixTable();
 		int[][][] M = new int[A.length() + 1][B.length() + 1][C.length() + 1];
 		int[][][][] P = new int[A.length() + 1][B.length() + 1][C.length() + 1][3];
@@ -693,14 +701,14 @@ public class AlignThreeSequence {
 		return new NamedObject(max_score, new StringBuilder[] {A_aln, B_aln, C_aln});
 	}
 
-	public static StringBuilder reverseStr(StringBuilder A) {
+	private static StringBuilder reverseStr(StringBuilder A) {
 		
 		return new StringBuilder(A.toString()).reverse();
 	}
-
-	public static int[] partionBC(int[][] upper, int[][] down) {
-		// find the 2D coordinates that maximizes the sum of two matrices
-		// store 2D coordinates into result
+    
+    // find the 2D coordinates that maximizes the sum of two matrices
+    // store 2D coordinates into result
+	private static int[] partionBC(int[][] upper, int[][] down) {
 		int[][] rotated180 = ClockWiseRotate90Degree(ClockWiseRotate90Degree(down));
 		int[] result = new int[2];
 		int max = -1000000;
@@ -716,7 +724,7 @@ public class AlignThreeSequence {
 		return result;
 	}
 
-	public static StringBuilder repeatStr(char str, int times){
+	private static StringBuilder repeatStr(char str, int times){
 		StringBuilder n = new StringBuilder();
 		for (int i = 0; i < times; ++i){
 			n.append(str);
@@ -725,7 +733,7 @@ public class AlignThreeSequence {
 	}
 
 	public static NamedObject recursive_call(StringBuilder A, StringBuilder B, StringBuilder C) {
-		System.err.format("len(A)=%d, len(B)=%d, len(C)=%d\n", A.length(), B.length(), C.length());
+//		System.err.format("len(A)=%d, len(B)=%d, len(C)=%d\n", A.length(), B.length(), C.length());
 //		System.err.format("A:%s\nB:%s\nC:%s\n", A, B, C);
 		if (A.length() == 0 || B.length() == 0 || C.length() == 0) {
 			StringBuilder [] n  = new StringBuilder [3];
@@ -809,7 +817,8 @@ public class AlignThreeSequence {
 		}
 		return new Pair<String, String> (head, result.toString());
 	}
-	
+
+    // associate a write object with a filename	
 	public static PrintWriter getWriter(String fileName){
 		PrintWriter writer = null;
 		try {

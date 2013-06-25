@@ -13,6 +13,19 @@ I have an implmentation in Python, see https://github.com/wuzhigang05/Dynamic-Pr
 See run{1,2,3,4,5}.sh for the usage of the program
 
 
+Installation
+============
+    make
+
+
+Example Usage
+=============
+
+    java  AlignThreeSequence NM_000558 NM_008218 NM_013096
+
+Above commands will write a file named "NM_000558_NM_008218_NM_013096" to your current working directory.
+This file contains the alignment for these three sequence file. Also, these files have to be in Fasta format. See
+here if you don' know what is a Fasta format (http://en.wikipedia.org/wiki/FASTA_format).
 
 Author
 =========

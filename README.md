@@ -27,13 +27,9 @@ Above commands will write a file named "NM_000558_NM_008218_NM_013096" to your c
 This file contains the alignment for these three sequences. Also, these files have to be in Fasta format. See
 here if you don' know what is a Fasta format (http://en.wikipedia.org/wiki/FASTA_format).
 
-Author
-=========
-Zhigang Wu
-
-Deparment of Botany and Plant Sciences
-
-University of California Riverside
+Send Bugs to
+============
+Zhigang Wu (zhigang.wu@email.ucr.edu)
 
 
 LICENSE

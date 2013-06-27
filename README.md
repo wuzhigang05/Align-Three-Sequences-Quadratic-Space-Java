@@ -9,6 +9,9 @@ I implemented alignment of three sequences in quadratic space. The idea of this 
 is similar to Hirschberg\'s algorithm http://en.wikipedia.org/wiki/Hirschberg's_algorithm, which 
 I have an implmentation in Python, see https://github.com/wuzhigang05/Dynamic-Programming-Linear-Space.git
 
+I implemented this program in Python too (https://github.com/wuzhigang05/Align-Three-Sequence-using-Quadratic-space.git). This version written in Java runs faster than the Python version. 
+However, the Python version is much more succinct. So, I recomend that you take a look at the Python code 
+to get a sense of the algorithm.
 
 See run{1,2,3,4,5}.sh for the usage of the program
 

@@ -7,9 +7,9 @@ space requirement, alignment of three genes with a length of more than 1000 char
 almost infeasible in most of our modern computers. Here, by using a divide conque technique, 
 I implemented alignment of three sequences in quadratic space. The idea of this implementation 
 is similar to Hirschberg\'s algorithm http://en.wikipedia.org/wiki/Hirschberg's_algorithm, which 
-I have an implmentation in Python, see https://github.com/wuzhigang05/Dynamic-Programming-Linear-Space.git
+I have an implmentation in Python, see [here](https://github.com/wuzhigang05/Dynamic-Programming-Linear-Space.git).
 
-I implemented this program in Python too (https://github.com/wuzhigang05/Align-Three-Sequence-using-Quadratic-space.git). This version written in Java runs faster than the Python version. 
+I implemented this program in Python too (see [here](https://github.com/wuzhigang05/Align-Three-Sequence-using-Quadratic-space.git)). This version written in Java runs faster than the Python version. 
 However, the Python version is much more succinct. So, I recomend that you take a look at the Python code 
 to get a sense of the algorithm.
 
@@ -28,7 +28,7 @@ Example Usage
 
 Above commands will write a file named "NM_000558_NM_008218_NM_013096" to your current working directory.
 This file contains the alignment for these three sequences. Also, these files have to be in Fasta format. See
-here if you don' know what is a Fasta format (http://en.wikipedia.org/wiki/FASTA_format).
+here if you don' know what is a [Fasta](http://en.wikipedia.org/wiki/FASTA_format) format .
 
 Send Bugs to
 ============
